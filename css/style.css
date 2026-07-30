@@ -1,0 +1,92 @@
+:root{
+    --forest:#0B3D2E; --gold:#C8A45D; --ink:#111111; --sage:#E8EDE4; --brown:#6B4226; --cream:#F5EDE0;
+  }
+  *{ scroll-behavior: smooth; }
+  body{ font-family:'Poppins', sans-serif; background:#FFFFFF; color:var(--ink); overflow-x:hidden; }
+  h1,h2,h3,h4,.font-display{ font-family:'Playfair Display', serif; }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important; }
+  }
+
+  /* Preloader */
+  #preloader{ position:fixed; inset:0; background:var(--forest); z-index:9999; display:flex; align-items:center; justify-content:center; transition:opacity .7s ease, visibility .7s ease; }
+  #preloader.hide{ opacity:0; visibility:hidden; }
+  .cup-loader{ width:64px; height:64px; border:3px solid rgba(200,164,93,.25); border-top-color:var(--gold); border-radius:50%; animation:spin 1s linear infinite; }
+  @keyframes spin{ to{ transform:rotate(360deg); } }
+
+  /* Nav */
+  #navbar{ transition: background-color .45s ease, box-shadow .45s ease, padding .45s ease; }
+  #navbar.solid{ background-color: rgba(11,61,46,0.97); box-shadow:0 6px 24px rgba(0,0,0,.15); backdrop-filter: blur(8px); }
+  .nav-link{ position:relative; }
+  .nav-link::after{ content:''; position:absolute; left:0; bottom:-6px; width:0%; height:1.5px; background:var(--gold); transition:width .35s ease; }
+  .nav-link:hover::after{ width:100%; }
+
+  /* Ripple buttons */
+  .btn-ripple{ position:relative; overflow:hidden; }
+  .btn-ripple .ripple{ position:absolute; border-radius:50%; background:rgba(255,255,255,.5); transform:scale(0); animation:ripple .6s ease-out; pointer-events:none; }
+  @keyframes ripple{ to{ transform:scale(4); opacity:0; } }
+
+  /* Coffee ring stamp - signature decorative element */
+  .ring-stamp{ position:absolute; border-radius:50%; border:1.5px solid var(--gold); opacity:.35; pointer-events:none; }
+  .ring-stamp.blur{ filter: blur(.4px); }
+
+  /* Pour line divider - signature element: animated gold line that draws like liquid pouring */
+  .pour-divider{ width:100%; height:60px; display:block; }
+  .pour-divider path{ stroke-dasharray: 1200; stroke-dashoffset:1200; animation:pourDraw 2.4s ease forwards; }
+  @keyframes pourDraw{ to{ stroke-dashoffset:0; } }
+
+  /* Glassmorphism */
+  .glass{ background: rgba(255,255,255,0.08); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border:1px solid rgba(255,255,255,0.18); }
+
+  /* Steam float */
+  .steam{ position:absolute; bottom:0; opacity:.5; filter: blur(2px); animation: steamRise 4.5s ease-in-out infinite; }
+  .steam.s2{ animation-delay:1.2s; left:14px; }
+  .steam.s3{ animation-delay:2.4s; left:-14px; }
+  @keyframes steamRise{
+    0%{ transform:translateY(0) scaleX(1); opacity:0; }
+    20%{ opacity:.55; }
+    50%{ transform:translateY(-45px) scaleX(1.3); }
+    100%{ transform:translateY(-90px) scaleX(.7); opacity:0; }
+  }
+
+  /* Hover scale cards */
+  .lift{ transition: transform .45s cubic-bezier(.2,.8,.2,1), box-shadow .45s ease; }
+  .lift:hover{ transform: translateY(-8px) scale(1.015); box-shadow: 0 24px 48px -12px rgba(11,61,46,.25); }
+
+  /* Gradient text */
+  .gold-gradient-text{ background: linear-gradient(120deg, #C8A45D 0%, #EBD8AE 50%, #A9843F 100%); -webkit-background-clip:text; background-clip:text; color:transparent; }
+
+  /* Tabs */
+  .menu-tab{ transition: all .35s ease; }
+  .menu-tab.active{ background: var(--forest); color:#fff; }
+  .menu-tab.active .fa{ color: var(--gold); }
+
+  /* Accordion */
+  .faq-panel{ max-height:0; overflow:hidden; transition: max-height .5s cubic-bezier(.4,0,.2,1), padding .3s ease; }
+  .faq-item.open .faq-panel{ max-height:300px; }
+  .faq-item.open .faq-icon{ transform: rotate(45deg); }
+  .faq-icon{ transition: transform .35s ease; }
+
+  /* Modal */
+  .modal-backdrop{ background: rgba(11,17,14,.72); backdrop-filter: blur(4px); }
+  .modal-panel{ transform: scale(.92) translateY(20px); opacity:0; transition: all .4s cubic-bezier(.2,.8,.2,1); }
+  .modal-open .modal-panel{ transform: scale(1) translateY(0); opacity:1; }
+
+  /* Masonry */
+  .masonry{ column-count:2; column-gap: 12px; }
+  @media(min-width:768px){ .masonry{ column-count:4; } }
+  .masonry img{ width:100%; margin-bottom:12px; border-radius:12px; display:block; }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar{ width:9px; }
+  ::-webkit-scrollbar-track{ background:var(--cream); }
+  ::-webkit-scrollbar-thumb{ background: var(--gold); border-radius:8px; }
+
+  .eyebrow{ letter-spacing:.22em; text-transform:uppercase; font-size:.72rem; font-weight:600; color:var(--gold-dark, #A9843F); }
+
+  .section-pad{ padding-top:5.5rem; padding-bottom:5.5rem; }
+
+  .focus-visible-ring:focus-visible{ outline:3px solid var(--gold); outline-offset:3px; }
+
+  input:focus, textarea:focus, button:focus-visible{ outline:2px solid var(--gold); outline-offset:2px; }
