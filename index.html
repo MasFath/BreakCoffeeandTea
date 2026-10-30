@@ -48,10 +48,7 @@
 <!-- ================= NAVBAR ================= -->
 <header id="navbar" class="fixed top-0 left-0 w-full z-50 py-4">
   <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
-    <a href="#home" class="flex items-center gap-2 font-display text-2xl font-bold text-white">
-      <span class="w-9 h-9 rounded-full border border-gold flex items-center justify-center text-gold text-sm"><i class="fa-solid fa-mug-saucer"></i></span>
-      Break <span class="text-gold">Coffee & Tea</span>
-    </a>
+    <a href="#home" class="flex items-center" aria-label="Break Coffee &amp; Tea"><img src="img/logo.png" alt="Break Coffee &amp; Tea" class="h-11 md:h-14 w-auto"></a>
     <nav class="hidden lg:flex items-center gap-9 text-white/90 text-sm font-medium">
       <a href="#home" class="nav-link">Home</a>
       <a href="#menu" class="nav-link">Minuman</a>
@@ -173,6 +170,7 @@
       <button class="menu-tab px-6 py-3 rounded-full text-sm font-semibold border border-forest/15" data-tab="milk"><i class="fa-solid fa-mug-saucer mr-2"></i>Milk</button>
       <button class="menu-tab px-6 py-3 rounded-full text-sm font-semibold border border-forest/15" data-tab="tea"><i class="fa-solid fa-mug-hot mr-2"></i>Tea</button>
       <button class="menu-tab px-6 py-3 rounded-full text-sm font-semibold border border-forest/15" data-tab="noncoffee"><i class="fa-solid fa-leaf mr-2"></i>Non Coffee</button>
+      <button class="menu-tab px-6 py-3 rounded-full text-sm font-semibold border border-forest/15" data-tab="special"><i class="fa-solid fa-star mr-2"></i>Menu Spesial</button>
     </div>
 
     <div id="menuGrid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
@@ -181,35 +179,277 @@
 
 <script id="menuData" type="application/json">
 {
-  "coffee": [
-    {"name":"Hot Americano","desc":"Espresso murni dengan air panas, ringan dan bold.","price":"5.000","img":"1495474472287-4d71bcdd2085","fav":true},
-    {"name":"Ice Americano","desc":"Sensasi kopi hitam segar dengan es batu.","price":"5.000","img":"1517701604599-bb29b565090c"},
-    {"name":"Ice Coffee Milk","desc":"Perpaduan kopi dan susu segar yang creamy.","price":"7.000","img":"1461023058943-07fcbe16d735","fav":true},
-    {"name":"Ice Coffee Banana","desc":"Kopi susu dengan sentuhan pisang manis.","price":"9.000","img":"1522992319-0365e5f11656"},
-    {"name":"Ice Coffee Vanilla","desc":"Aroma vanilla lembut berpadu kopi premium.","price":"9.000","img":"1497935586351-b67a49e012bf"},
-    {"name":"Ice Coffee Coconut","desc":"Kesegaran krim kelapa dan kopi robusta.","price":"10.000","img":"1442512595331-e89e73853f31"},
-    {"name":"IceCoffee Hazelnut","desc":"Rasa hazelnut yang gurih dan harum.","price":"10.000","img":"1512568400610-62da28bc8a13"},
-    {"name":"Ice Coffee Butterscotch","desc":"Manis karamel butterscotch yang memanjakan.","price":"10.000","img":"1524350876685-274059332603"}
-  ],
-   "milk": [
-    {"name":"Ice Milk","desc":"Susu segar dingin, murni dan menyegarkan.","price":"5.000","img":"1550583724-b2692b85b150"},
-    {"name":"Ice Milk Cincau","desc":"Susu segar dengan cincau kenyal.","price":"6.000","img":"1550583724-b2692b85b150","fav":true},
-    {"name":"Ice Milk Mango","desc":"Susu creamy berpadu mangga tropis.","price":"6.000","img":"1546173159-315724a31696"},
-    {"name":"Ice Milk Strawberry","desc":"Manis segar strawberry dan susu creamy.","price":"6.000","img":"1553530666-ba11a7da3888"},
-    {"name":"Ice Milk Sirsak","desc":"Perpaduan susu dengan sirsak segar.","price":"6.000","img":"1550583724-b2692b85b150"}
-  ],
-   "tea": [
-    {"name":"Ice Tea","desc":"Teh hitam premium, klasik dan menyegarkan.","price":"3.000","img":"1499638673689-79a0b5115d87"},
-    {"name":"Ice Lemon Tea","desc":"Teh segar dengan perasan lemon asli.","price":"4.000","img":"1499638673689-79a0b5115d87","fav":true},
-    {"name":"Ice Tea Cincau","desc":"Teh manis dengan cincau kenyal alami.","price":"4.000","img":"1576092768241-dec231879fc3"},
-    {"name":"Ice Mango Tea","desc":"Teh segar berpadu mangga manis.","price":"4.000","img":"1499638673689-79a0b5115d87"}
-  ],
-  "noncoffee": [
-    {"name":"Ice Matcha Smooth","desc":"Matcha premium Jepang, lembut dan halus.","price":"8.000","img":"1536256263959-770b48d82b0a","fav":true},
-    {"name":"Ice Matcha Latte Creamy","desc":"Matcha creamy berpadu susu segar.","price":"9.000","img":"1536256263959-770b48d82b0a"},
-    {"name":"Ice Chocolate","desc":"Cokelat premium yang kaya dan legit.","price":"8.000","img":"1481391319762-47dff72954d9"},
-    {"name":"Ice Milk Chocolate","desc":"Cokelat susu creamy yang memanjakan.","price":"10.000","img":"1481391319762-47dff72954d9"}
-  ]
+ "coffee": [
+  {
+   "name": "Hot Americano",
+   "desc": "Espresso murni dengan air panas, ringan dan bold.",
+   "price": "5.000",
+   "img": "1495474472287-4d71bcdd2085",
+   "fav": true
+  },
+  {
+   "name": "Ice Americano",
+   "desc": "Sensasi kopi hitam segar dengan es batu.",
+   "price": "5.000",
+   "img": "1517701604599-bb29b565090c"
+  },
+  {
+   "name": "Ice Coffee Milk",
+   "desc": "Perpaduan kopi dan susu segar yang creamy.",
+   "price": "7.000",
+   "img": "1461023058943-07fcbe16d735",
+   "fav": true
+  },
+  {
+   "name": "Ice Coffee Banana",
+   "desc": "Kopi susu dengan sentuhan pisang manis.",
+   "price": "9.000",
+   "img": "1522992319-0365e5f11656"
+  },
+  {
+   "name": "Ice Coffee Vanilla",
+   "desc": "Aroma vanilla lembut berpadu kopi premium.",
+   "price": "9.000",
+   "img": "1497935586351-b67a49e012bf"
+  },
+  {
+   "name": "Ice Coffee Coconut",
+   "desc": "Kesegaran krim kelapa dan kopi robusta.",
+   "price": "10.000",
+   "img": "1442512595331-e89e73853f31"
+  },
+  {
+   "name": "IceCoffee Hazelnut",
+   "desc": "Rasa hazelnut yang gurih dan harum.",
+   "price": "10.000",
+   "img": "1512568400610-62da28bc8a13"
+  },
+  {
+   "name": "Ice Coffee Butterscotch",
+   "desc": "Manis karamel butterscotch yang memanjakan.",
+   "price": "10.000",
+   "img": "1524350876685-274059332603"
+  },
+  {
+   "name": "Ice Coffee Matcha",
+   "desc": "Kopi berpadu matcha, perpaduan unik pahit dan manis.",
+   "price": "10.000",
+   "img": "1536256263959-770b48d82b0a"
+  }
+ ],
+ "milk": [
+  {
+   "name": "Ice Milk",
+   "desc": "Susu segar dingin, murni dan menyegarkan.",
+   "price": "5.000",
+   "img": "1550583724-b2692b85b150"
+  },
+  {
+   "name": "Ice Milk Cincau",
+   "desc": "Susu segar dengan cincau kenyal.",
+   "price": "6.000",
+   "img": "1550583724-b2692b85b150",
+   "fav": true
+  },
+  {
+   "name": "Ice Milk Mango",
+   "desc": "Susu creamy berpadu mangga tropis.",
+   "price": "6.000",
+   "img": "1546173159-315724a31696"
+  },
+  {
+   "name": "Ice Milk Strawberry",
+   "desc": "Manis segar strawberry dan susu creamy.",
+   "price": "6.000",
+   "img": "1553530666-ba11a7da3888"
+  },
+  {
+   "name": "Ice Milk Sirsak",
+   "desc": "Perpaduan susu dengan sirsak segar.",
+   "price": "6.000",
+   "img": "1550583724-b2692b85b150"
+  }
+ ],
+ "tea": [
+  {
+   "name": "Ice Tea",
+   "desc": "Teh hitam premium, klasik dan menyegarkan.",
+   "price": "3.000",
+   "img": "1499638673689-79a0b5115d87"
+  },
+  {
+   "name": "Ice Lemon Tea",
+   "desc": "Teh segar dengan perasan lemon asli.",
+   "price": "4.000",
+   "img": "1499638673689-79a0b5115d87",
+   "fav": true
+  },
+  {
+   "name": "Ice Tea Cincau",
+   "desc": "Teh manis dengan cincau kenyal alami.",
+   "price": "4.000",
+   "img": "1576092768241-dec231879fc3"
+  },
+  {
+   "name": "Ice Mango Tea",
+   "desc": "Teh segar berpadu mangga manis.",
+   "price": "4.000",
+   "img": "1499638673689-79a0b5115d87"
+  }
+ ],
+ "noncoffee": [
+  {
+   "name": "Ice Matcha Smooth",
+   "desc": "Matcha premium Jepang, lembut dan halus.",
+   "price": "8.000",
+   "img": "1536256263959-770b48d82b0a",
+   "fav": true
+  },
+  {
+   "name": "Ice Matcha Latte Creamy",
+   "desc": "Matcha creamy berpadu susu segar.",
+   "price": "9.000",
+   "img": "1536256263959-770b48d82b0a"
+  },
+  {
+   "name": "Ice Chocolate",
+   "desc": "Cokelat premium yang kaya dan legit.",
+   "price": "8.000",
+   "img": "1481391319762-47dff72954d9"
+  },
+  {
+   "name": "Ice Milk Chocolate",
+   "desc": "Cokelat susu creamy yang memanjakan.",
+   "price": "10.000",
+   "img": "1481391319762-47dff72954d9"
+  }
+ ],
+ "special": [
+  {
+   "name": "Hot Break Tea",
+   "desc": "Teh panas khas Break, hangat dan harum.",
+   "price": "4.000",
+   "img": "img/spesial/01.webp"
+  },
+  {
+   "name": "Iced Break Tea",
+   "desc": "Teh khas Break disajikan dingin, segar.",
+   "price": "4.000",
+   "img": "img/spesial/02.webp"
+  },
+  {
+   "name": "Iced Tea Tarik",
+   "desc": "Teh susu creamy dengan sentuhan rempah.",
+   "price": "6.000",
+   "img": "img/spesial/03.webp",
+   "fav": true
+  },
+  {
+   "name": "Iced Break Tea Yakult",
+   "desc": "Teh dingin dengan Yakult, asam-manis segar.",
+   "price": "7.000",
+   "img": "img/spesial/04.webp"
+  },
+  {
+   "name": "Iced Matcha Lava",
+   "desc": "Matcha lembut dengan lapisan lava matcha.",
+   "price": "11.000",
+   "img": "img/spesial/05.webp",
+   "fav": true
+  },
+  {
+   "name": "Iced Choco Lava",
+   "desc": "Susu cokelat dengan lava cokelat pekat.",
+   "price": "11.000",
+   "img": "img/spesial/06.webp",
+   "fav": true
+  },
+  {
+   "name": "Iced Matcha Aren Latte",
+   "desc": "Matcha latte berpadu manis gula aren.",
+   "price": "12.000",
+   "img": "img/spesial/07.webp"
+  },
+  {
+   "name": "Iced Matcha Strawberry Milk",
+   "desc": "Matcha, susu, dan strawberry dalam satu gelas.",
+   "price": "13.000",
+   "img": "img/spesial/08.webp"
+  },
+  {
+   "name": "Iced Choco Strawberry Milk",
+   "desc": "Cokelat dan strawberry milk yang manis segar.",
+   "price": "13.000",
+   "img": "img/spesial/09.webp"
+  },
+  {
+   "name": "Iced Strawberry Fresh Milk",
+   "desc": "Susu segar dengan sirup strawberry.",
+   "price": "10.000",
+   "img": "img/spesial/10.webp"
+  },
+  {
+   "name": "Iced Break Coffee Americano",
+   "desc": "Kopi hitam pekat dengan es batu.",
+   "price": "8.000",
+   "img": "img/spesial/11.webp"
+  },
+  {
+   "name": "Iced Break Coffee Aren Latte",
+   "desc": "Kopi susu gula aren yang creamy.",
+   "price": "10.000",
+   "img": "img/spesial/12.webp",
+   "fav": true
+  },
+  {
+   "name": "Iced Break Coffee Matcha Latte",
+   "desc": "Perpaduan kopi, matcha, dan susu.",
+   "price": "12.000",
+   "img": "img/spesial/13.webp"
+  },
+  {
+   "name": "Iced Break Coffee Vanila Latte",
+   "desc": "Latte lembut beraroma vanila.",
+   "price": "10.000",
+   "img": "img/spesial/14.webp"
+  },
+  {
+   "name": "Iced Break Coffee Hazelnut",
+   "desc": "Kopi susu dengan sirup hazelnut yang gurih.",
+   "price": "12.000",
+   "img": "img/spesial/15.webp"
+  },
+  {
+   "name": "Iced Break Coffee Butterscotch",
+   "desc": "Kopi susu dengan saus butterscotch.",
+   "price": "12.000",
+   "img": "img/spesial/16.webp"
+  },
+  {
+   "name": "Iced Break Coffee Banana Latte",
+   "desc": "Kopi susu dengan sentuhan pisang.",
+   "price": "11.000",
+   "img": "img/spesial/17.webp"
+  },
+  {
+   "name": "Iced Break Coffee Spanish Latte",
+   "desc": "Latte manis dengan susu kental yang creamy.",
+   "price": "12.000",
+   "img": "img/spesial/18.webp"
+  },
+  {
+   "name": "Iced Break Coffee Latte",
+   "desc": "Espresso dan susu segar yang seimbang.",
+   "price": "10.000",
+   "img": "img/spesial/19.webp"
+  },
+  {
+   "name": "Hot Break Coffee Americano",
+   "desc": "Espresso dengan air panas, ringan dan bold.",
+   "price": "8.000",
+   "img": "img/spesial/20.webp"
+  }
+ ]
 }
 </script>
 
@@ -226,26 +466,46 @@
 
 <script id="productsData" type="application/json">
 [
-  {"name":"Kopi Halus Sumatra","desc":"Bubuk matcha premium asal Jepang, siap seduh.","weight":"250 gram","img":"img/Kopi.webp",
-   "ingredients":"Bubuk matcha Jepang grade premium, gula tebu, creamer non-dairy.",
-   "nutrition":"Per sajian (25g): 95 kkal, 2g protein, 15g karbohidrat, 3g lemak.",
-   "prep":"Tuang 25g bubuk ke dalam 150ml air panas/susu, aduk rata, sajikan panas atau dingin.",
-   "packaging":"Kemasan pouch aluminium foil, kedap udara, tersedia 250g."},
-  {"name":"Sumatra Fine Coffee","desc":"Biji kopi arabika Sumatra single origin, medium roast.","weight":"200 gram","img":"1447933601403-0c6688de566e",
-   "ingredients":"100% biji kopi arabika Sumatra pilihan, medium roast.",
-   "nutrition":"Per sajian (15g): 5 kkal, 0g gula, tinggi antioksidan.",
-   "prep":"Giling sesuai metode seduh, gunakan rasio 1:15 kopi terhadap air, seduh pada suhu 92-96°C.",
-   "packaging":"Kemasan valve bag kedap udara untuk menjaga kesegaran aroma."},
-  {"name":"Java Creamer","desc":"Creamer krimer khas Jawa untuk kopi lebih creamy.","weight":"300 gram","img":"1509042239860-f550ce710b93",
-   "ingredients":"Minyak nabati, gula, susu bubuk, perisa krim alami.",
-   "nutrition":"Per sajian (10g): 45 kkal, 2.5g lemak, 5g karbohidrat.",
-   "prep":"Tambahkan 1-2 sendok makan ke dalam kopi atau teh panas, aduk hingga larut.",
-   "packaging":"Kemasan pouch resealable 300g, mudah disimpan."},
-  {"name":"Bogor Tea","desc":"Teh hitam pegunungan Bogor, aroma khas dan kuat.","weight":"100 gram","img":"1499638673689-79a0b5115d87",
-   "ingredients":"100% daun teh hitam pilihan dari perkebunan Bogor.",
-   "nutrition":"Per sajian (2g): 0 kkal, kaya polifenol dan antioksidan.",
-   "prep":"Seduh 2g teh dengan 200ml air panas (95°C) selama 3-5 menit.",
-   "packaging":"Kemasan kotak dengan 25 kantong teh individual."}
+ {
+  "name": "Kopi Halus Sumatra",
+  "desc": "Kopi robusta halus asli Sumatra, aroma kuat dan rasa mantap.",
+  "weight": "200 gram",
+  "img": "img/produk-kopi.webp",
+  "ingredients": "100% biji kopi robusta Sumatra pilihan, digiling halus.",
+  "nutrition": "Informasi nilai gizi tercantum pada label kemasan.",
+  "prep": "Seduh 1–2 sendok teh kopi halus dengan 150 ml air panas, aduk, lalu diamkan hingga ampas mengendap.",
+  "packaging": "Standing pouch hitam kedap udara, netto 200 g."
+ },
+ {
+  "name": "Teh Tarik Premium",
+  "desc": "Teh tarik sepet, wangi, dan creamy — tarikannya sampai ke hati.",
+  "weight": "200 gram",
+  "img": "img/produk-teh-tarik.webp",
+  "ingredients": "Daun teh pilihan berkualitas terbaik.",
+  "nutrition": "Informasi nilai gizi tercantum pada label kemasan.",
+  "prep": "Seduh dengan air panas, tambahkan susu sesuai selera, lalu tarik antar dua gelas hingga berbusa.",
+  "packaging": "Standing pouch kedap udara, netto 200 g."
+ },
+ {
+  "name": "O.P Matcha Latte Premium",
+  "desc": "100% matcha pilihan: lembut, pekat, dan lezat.",
+  "weight": "200 gram",
+  "img": "img/produk-matcha.webp",
+  "ingredients": "Bubuk matcha pilihan terbaik.",
+  "nutrition": "Informasi nilai gizi tercantum pada label kemasan.",
+  "prep": "Larutkan bubuk matcha dengan sedikit air panas, tambahkan susu panas atau dingin, aduk hingga creamy.",
+  "packaging": "Standing pouch kedap udara, netto 200 g."
+ },
+ {
+  "name": "Teh Bogor Premium",
+  "desc": "Teh berkualitas dari dataran tinggi Bogor: sepet, wangi, serasa di puncak.",
+  "weight": "100 gram",
+  "img": "img/produk-teh-bogor.webp",
+  "ingredients": "Daun teh pilihan dari dataran tinggi Bogor.",
+  "nutrition": "Informasi nilai gizi tercantum pada label kemasan.",
+  "prep": "Seduh 2 g teh dengan 200 ml air panas (95°C) selama 3–5 menit.",
+  "packaging": "Standing pouch kedap udara, netto 100 g."
+ }
 ]
 </script>
 
@@ -254,7 +514,7 @@
   <div class="modal-panel bg-white rounded-3xl max-w-3xl w-full max-h-[88vh] overflow-y-auto relative shadow-2xl">
     <button id="closeModal" class="absolute top-5 right-5 w-10 h-10 rounded-full bg-forest text-white flex items-center justify-center hover:bg-gold hover:text-forest transition-colors z-10" aria-label="Tutup"><i class="fa-solid fa-xmark"></i></button>
     <div class="grid md:grid-cols-2">
-      <img id="modalImg" src="" alt="" class="w-full h-64 md:h-full object-cover">
+      <img id="modalImg" src="" alt="" class="w-full h-72 md:h-full object-contain bg-black">
       <div class="p-8">
         <h3 id="modalName" class="font-display text-3xl font-bold text-forest mb-2"></h3>
         <p id="modalDesc" class="text-ink/60 mb-6"></p>
@@ -525,9 +785,9 @@
         <iframe title="Lokasi Break Coffee & Tea" class="w-full h-full border-0" loading="lazy" src="https://www.google.com/maps?q=Semarang,Indonesia&output=embed"></iframe>
       </div>
       <div class="space-y-4 text-white/80 text-sm">
-        <p><i class="fa-solid fa-location-dot text-gold w-6"></i> JL. Klapanunggal Cikahuripan Cileungsi Bogor Jawa Barat - 16820</p>
-        <p><i class="fa-brands fa-whatsapp text-gold w-6"></i> +62 812-3456-7890</p>
-        <p><i class="fa-solid fa-envelope text-gold w-6"></i> hello@breakcoffeetea.co.id</p>
+        <p><i class="fa-solid fa-location-dot text-gold w-6"></i> JL. Pg Sumberharjo Wanamulya Pemalang Jawa Tengah 52318</p>
+        <p><i class="fa-brands fa-whatsapp text-gold w-6"></i> +62 882 0055 33311</p>
+        <p><i class="fa-solid fa-envelope text-gold w-6"></i> breakcoffeetea02@gmail.com</p>
         <p><i class="fa-solid fa-clock text-gold w-6"></i> Setiap hari, 08.00 – 22.00 WIB</p>
         <div class="flex gap-4 pt-2 text-lg">
           <a href="#" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-gold hover:text-forest hover:border-gold transition-colors" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
@@ -554,10 +814,7 @@
 <footer class="bg-black text-white/60 pt-16 pb-8">
   <div class="max-w-7xl mx-auto px-6 grid sm:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
     <div class="lg:col-span-2">
-      <a href="#home" class="flex items-center gap-2 font-display text-2xl font-bold text-white mb-4">
-        <span class="w-9 h-9 rounded-full border border-gold flex items-center justify-center text-gold text-sm"><i class="fa-solid fa-mug-saucer"></i></span>
-        Break <span class="text-gold">C&T</span>
-      </a>
+      <a href="#home" class="flex items-center mb-4" aria-label="Break Coffee &amp; Tea"><img src="img/logo.png" alt="Break Coffee &amp; Tea" class="h-14 w-auto"></a>
       <p class="text-sm leading-relaxed max-w-xs">Satu pilihan untuk sejuta momen kenikmatan — kopi, teh, dan matcha premium khas Indonesia.</p>
     </div>
     <div>
