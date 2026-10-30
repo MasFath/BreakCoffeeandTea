@@ -66,7 +66,7 @@
       card.setAttribute('data-aos-delay', (i%4)*80);
       card.innerHTML = `
         <div class="relative">
-          <img src="https://images.unsplash.com/photo-${item.img}?q=80&w=600&auto=format&fit=crop" alt="${item.name}" loading="lazy" class="w-full h-44 object-cover">
+          ${item.img.includes('/') ? `<img src="${item.img}" alt="${item.name}" loading="lazy" class="w-full aspect-square object-cover">` : `<img src="https://images.unsplash.com/photo-${item.img}?q=80&w=600&auto=format&fit=crop" alt="${item.name}" loading="lazy" class="w-full h-44 object-cover">`}
           ${item.fav ? '<span class="absolute top-3 left-3 bg-gold text-forest text-[10px] font-bold px-2.5 py-1 rounded-full"><i class="fa-solid fa-heart mr-1"></i>Favorite</span>' : ''}
         </div>
         <div class="p-5">
@@ -100,7 +100,7 @@
     card.setAttribute('data-aos-delay', i*100);
     card.innerHTML = `
        <img src="${p.img}" alt="${p.name}" loading="lazy"
-       class="w-full h-48 object-cover">
+       class="w-full aspect-square object-cover bg-black">
       <div class="p-5">
         <h3 class="font-display font-semibold text-base mb-1">${p.name}</h3>
         <p class="text-xs text-ink/50 mb-2">${p.desc}</p>
